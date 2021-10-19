@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+</head>
+
+
+<body>
+    <div class="App">
+        <header class="App-header">
+            <p>
+            Select a currency
+            </p>
+        </header>
+    </div>
+    <div class="Input">
+        <div class="selection">
+            <form id = "form1" action = '/form' method="POST" enctype="multipart/form-data">
+                <select name = "currencySelect" id="currsel">
+                    <!-- <option value="{{exchanges[0]}}" SELECTED>{{exchanges[0]}}</option>
+                    {% for exchange in exchanges[1:] %}
+                    <option value="{{exchange}}">{{exchange}}</option>
+                    {% endfor %} -->
+                    {% if not curr %}
+                        <option value="{{currencies[0]}}" SELECTED>{{currencies[0]}}</option>
+                        {% for currency in currencies[1:] %}
+                            <option value="{{currency}}">{{currency}}</option>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if curr %}
+                        {% for currency in currencies %}
+                            {% if currency == curr %}
+                                <option value="{{currency}}" SELECTED>{{currency}}</option>
+                            {% else %}
+                                <option value="{{currency}}">{{currency}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </select>
+                <br/>
+                <input type="submit" value="Get Buy/Sell Information">
+            </form>
+        </div>
+    </div>
+
+    <div class="Table">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Exchange</th>
+                    <th>Buy (Bid)</th>
+                    <th>Sell (Ask)</th>
+                </tr>
+                <!-- <tr>
+                    <td>Bitstamp</td>
+                    <td>Buy</td>
+                    <td>Sell</td>
+                </tr>
+                <tr>
+                    <td>HitBTC</td>
+                    <td>Buy</td>
+                    <td>Sell</td> 
+                </tr> -->
+                {% if currencyInfo %}
+                    {% for exchange in exchanges %}
+                    <tr>
+                        <td>{{exchange}}</td>
+                        <td>{{currencyInfo[exchange]["result"]["asks"][0][0]}}</td>
+                        <td>{{currencyInfo[exchange]["result"]["bids"][0][0]}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="Results">
+        {% if curr %}
+            <p>Due to the prices, it appears the best exchange to sell {{curr}} is {{bestSell}}.
+            <br><br>
+            Conversely, the best exchange to buy {{curr}} is {{bestBuy}}.</p>
+        {% endif %}
+    </div>
+</body>
