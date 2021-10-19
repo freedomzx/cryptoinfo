@@ -48,7 +48,6 @@ def form():
         bestSell = ""
         bestSellPrice = 0
 
-        print(currencyInfo.keys(), flush=True)
         for i in currencyInfo.keys():
             if currencyInfo[i]["result"]["asks"][0][0] < bestBuyPrice:
                 bestBuyPrice = currencyInfo[i]["result"]["asks"][0][0]
@@ -57,6 +56,7 @@ def form():
             if currencyInfo[i]["result"]["bids"][0][0] > bestSellPrice:
                 bestSellPrice = currencyInfo[i]["result"]["bids"][0][0]
                 bestSell = i
+
     #re-render page with new information gotten
     return render_template("index.html", exchanges=validExchanges, currencies=currencies, curr=curr, currencyInfo=currencyInfo, bestBuy=bestBuy, bestSell=bestSell)
 
