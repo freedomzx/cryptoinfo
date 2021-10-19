@@ -4,7 +4,6 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
 </head>
 
-
 <body>
     <div class="App">
         <header class="App-header">
@@ -17,10 +16,6 @@
         <div class="selection">
             <form id = "form1" action = '/form' method="POST" enctype="multipart/form-data">
                 <select name = "currencySelect" id="currsel">
-                    <!-- <option value="{{exchanges[0]}}" SELECTED>{{exchanges[0]}}</option>
-                    {% for exchange in exchanges[1:] %}
-                    <option value="{{exchange}}">{{exchange}}</option>
-                    {% endfor %} -->
                     {% if not curr %}
                         <option value="{{currencies[0]}}" SELECTED>{{currencies[0]}}</option>
                         {% for currency in currencies[1:] %}
@@ -52,22 +47,12 @@
                     <th>Buy (Bid)</th>
                     <th>Sell (Ask)</th>
                 </tr>
-                <!-- <tr>
-                    <td>Bitstamp</td>
-                    <td>Buy</td>
-                    <td>Sell</td>
-                </tr>
-                <tr>
-                    <td>HitBTC</td>
-                    <td>Buy</td>
-                    <td>Sell</td> 
-                </tr> -->
                 {% if currencyInfo %}
                     {% for exchange in exchanges %}
                     <tr>
                         <td>{{exchange}}</td>
-                        <td>{{currencyInfo[exchange]["result"]["asks"][0][0]}}</td>
                         <td>{{currencyInfo[exchange]["result"]["bids"][0][0]}}</td>
+                        <td>{{currencyInfo[exchange]["result"]["asks"][0][0]}}</td>
                     </tr>
                     {% endfor %}
                 {% endif %}
@@ -77,9 +62,9 @@
 
     <div class="Results">
         {% if curr %}
-            <p>Due to the prices, it appears the best exchange to sell {{curr}} is {{bestSell}}.
+            <p>Due to the prices, it appears the best exchange to sell {{curr}} is {{bestSell}}, as it has the highest bidders.
             <br><br>
-            Conversely, the best exchange to buy {{curr}} is {{bestBuy}}.</p>
+            Conversely, the best exchange to buy {{curr}} is {{bestBuy}}, as it has the lowest asking price on a sale.</p>
         {% endif %}
     </div>
 </body>

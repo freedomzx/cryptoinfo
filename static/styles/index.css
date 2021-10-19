@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   min-height: 30;
   display: flex;
@@ -17,11 +12,9 @@
   color: white;
 }
 
-.Container{
-}
-
 .Input {
-  height: 0vmin;
+  position: relative;
+  top: -10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,20 +25,22 @@
 
 .Results{
   display: flex;
-  height: 15vmin;
+
   flex-direction: row;
   align-items: center;
   justify-content: center;
   color: white;
+
 }
 
 .Table{
   display: flex;
-  height: 15vmin;
+
   flex-direction: row;
   justify-content: center;
-  margin-top:50px;
+
 }
+
 
 body {
   margin: 0;
@@ -54,11 +49,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 html{
@@ -70,9 +60,4 @@ table{
   border-spacing: 50px 0;
   color: white;
 }
-
-table, th, td{
-  
-}
-  
   
