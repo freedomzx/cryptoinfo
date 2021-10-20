@@ -8,7 +8,7 @@ I believe most of the sub-optimal implementation has to do with how the informat
 In order 
 
 
-In order to implement some sense of scalability for future improvements and additions, the webpage is capable of displaying information of more than two exchanges.  The code was written such that it could handle and give recommendations for any amount of exchanges that is 2 or greater.
+In order to implement some sense of scalability for future improvements and additions, the webpage is capable of displaying information of more than two exchanges.  The code was written such that it could handle and give recommendations for any amount of exchanges that is 2 or greater, even though it would have been sufficient enough for it to only have statements for 2 exchanges.  In addition, while there are only two currencies (bitcoin and ethereum) the code was written such that it could easily implement more currencies, as they would just have to be added to the lists used for the dropdown menu.
 
 3.	If you have to scale your solution to 100 users/second traffic what changes would you make, if any?
 
